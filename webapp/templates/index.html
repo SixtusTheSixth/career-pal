@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{% if title %}
+		<title>{{ title }}</title>
+		{% else %}
+		<title>Error 603 - Snails Not Available</title>
+		{% endif %}
+	</head>
+	<body>
+		<script type="module"
+		src="https://gradio.s3-us-west-2.amazonaws.com/3.34.0/gradio.js">
+		</script>
+		<h1>CareerPal</h1>
+		<gradio-app src="https://anandaa-careerpal.hf.space"></gradio-app>
+	</body>
+</html>

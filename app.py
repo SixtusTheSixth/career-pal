@@ -1,5 +1,4 @@
 import gradio as gr
-from webapp import webapp
 
 def add_text(history, text):
     history = history + [[text, None]]
@@ -30,7 +29,4 @@ with gr.Blocks() as demo:
 
     clear_btn.click(lambda: None, inputs=None, outputs=output_box, queue=False)
 
-demo.launch(server_port=7860, show_api=False, share=False) # , share = True, inline = True)
-
-# set FLASK_APP=app.py
-# flask run -h localhost -p 7860
+demo.launch() # server_port=7860, show_api=False, share=False, inline=True) # , share = True, inline = True)
