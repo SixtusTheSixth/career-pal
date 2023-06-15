@@ -15,7 +15,8 @@ def add_text(history, text):
 def process_input(history):
     inp = history[-1][0]
     # response = "I have received your input, which is: \n" + inp
-    if len(history) <= 2:
+    print(len(history))
+    if len(chat_bot.discussion) > 0 and len(history) <= 2:
        chat_bot.reset_context()
     response = chat_bot.chat(inp)
     history[-1][1] = response
@@ -70,6 +71,8 @@ class ChatBot():
   def reset_context(self):
     self.sources = []
     self.discussion = []
+    if hasattr(self, 'qa_chain'):
+      del self.qa_chain
     # Building the chain will load Dolly and can take some time depending on the model size and your GPU
     self.qa_chain = build_qa_chain()
  
