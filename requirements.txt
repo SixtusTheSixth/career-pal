@@ -3,3 +3,6 @@ gradio
 torch
 transformers
 langchain
+docx2txt
+nltk
+pypdf

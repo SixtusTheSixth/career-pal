@@ -4,6 +4,7 @@ import docx2txt
 import nltk
 import requests
 import time
+from pypdf import PdfReader
 
 nltk.download('stopwords')
 nltk.download('punkt')
@@ -31,9 +32,14 @@ RESERVED_WORDS = [
  
 
 def extract_text_from_docx(docx_path):
-    txt = docx2txt.process(docx_path)
-    if txt:
-        return txt.replace('\t', ' ')
+    if docx_path.filename[-4:] == 'docx':
+        txt = docx2txt.process(docx_path)
+        if txt:
+            return txt.replace('\t', ' ')
+    elif docx_path.filename[-3:] == 'pdf':
+        reader = PdfReader(docx_path)
+        txt = '\n'.join([line.strip()[::2] for line in ''.join(p.extract_text(0) for p in reader.pages).split('\n')])
+        return txt # hopefully important info is only vertically oriented
     return None
 
 def skill_exists(skill):
@@ -47,6 +53,7 @@ def skill_exists(skill):
     raise Exception(result.get('message'))
 
 def extract_skills(input_text, timerange):
+    print(input_text)
     stop_words = set(nltk.corpus.stopwords.words('english'))
     word_tokens = nltk.tokenize.word_tokenize(input_text)
  
