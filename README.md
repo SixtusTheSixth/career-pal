@@ -13,6 +13,6 @@ If you would like to run the chatbot alone locally (which would make it signific
 1. `git clone https://github.com/SixtusTheSixth/career-pal.git` (if you have not already done so)
 2. `pip install -r requirements.txt`
 3. `python app.py`
-4. and open localhost:7860 (the link will appear in the terminal);.
+4. and open localhost:7860 (the link will appear in the terminal).
 
 We hope you find this resource helpful!
