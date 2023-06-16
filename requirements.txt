@@ -3,6 +3,10 @@ gradio
 torch
 transformers
 langchain
+chromadb
+accelerate
+bitsandbytes
 docx2txt
 nltk
 pypdf
+sentence_transformers
