@@ -44,7 +44,7 @@ def extract_text_from_docx(docx_path):
 
 def skill_exists(skill):
     url = f'https://api.apilayer.com/skills?q={skill}&amp;count=1'
-    headers = {'apikey': 'l2BFkm2hY9qeQT37xaCB1rdyeWUnY5S1'}
+    headers = {'apikey': '4sIqZE1jFrYmVSLsjS0sRchwt6NcgCKL'}
     response = requests.request('GET', url, headers=headers)
     result = response.json()
  
@@ -117,6 +117,6 @@ def index():
 def action_page():
 	f = request.files['filename']
 	text = extract_text_from_docx(f)
-	skills = extract_skills(text, 40)
+	skills = extract_skills(text, 30)
 	education = extract_education(text)
 	return render_template('index.html', title='CareerPal', skills=skills, education=education)
